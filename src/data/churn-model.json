@@ -1,0 +1,14 @@
+{
+  "model": "logistic_regression",
+  "trained_on_rows": 0,
+  "numeric": {"purchase_freq": {"mean": 24, "std": 14}, "avg_order_value": {"mean": 10000, "std": 5500}, "last_purchase_days": {"mean": 190, "std": 105}, "loyalty_points": {"mean": 4900, "std": 2900}},
+  "categorical": {"age_group": ["18-25","26-35","36-45","46-55","55+"], "region": ["Central","East","North","South","West"]},
+  "coef": {"purchase_freq": -0.8, "avg_order_value": -0.1, "last_purchase_days": 1.2, "loyalty_points": -0.2, "age_group=18-25": 0, "age_group=26-35": 0, "age_group=36-45": 0, "age_group=46-55": 0, "age_group=55+": 0, "region=Central": 0, "region=East": 0, "region=North": 0, "region=South": 0, "region=West": 0},
+  "intercept": -2.0,
+  "threshold": 0.5,
+  "metrics": {"accuracy": 0, "precision": 0, "recall": 0, "f1": 0, "roc_auc": 0, "confusion_matrix": [[0,0],[0,0]], "test_rows": 0},
+  "comparison": [],
+  "original_500_roc_auc": 0.5,
+  "feature_importance": [],
+  "trained_at": "placeholder"
+}

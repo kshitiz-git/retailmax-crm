@@ -1,0 +1,475 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * RetailMax CRM design system.
+ * Light grey canvas, pure-white soft cards, one violet accent, cyan + radish
+ * as the only supporting hues. Light is default; dark mirrors the structure.
+ * Every colour, radius and chart series is a token — never hardcode.
+ */
+
+@theme inline {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Sora", "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --radius-sm: var(--r-sm);
+  --radius-md: var(--r-md);
+  --radius-lg: var(--r-lg);
+  --radius-xl: var(--r-xl);
+  --radius-2xl: calc(var(--r-xl) + 6px);
+
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-text-2: var(--text-2);
+  --color-text-3: var(--text-3);
+
+  --color-card: var(--surface);
+  --color-card-foreground: var(--text);
+  --color-popover: var(--surface);
+  --color-popover-foreground: var(--text);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-secondary: var(--surface-2);
+  --color-secondary-foreground: var(--text);
+  --color-muted: var(--surface-2);
+  --color-muted-foreground: var(--text-3);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-soft: var(--accent-soft);
+  --color-destructive: var(--danger);
+  --color-destructive-foreground: var(--on-danger);
+  --color-border: var(--border);
+  --color-border-solid: var(--border-solid);
+  --color-input: var(--border-solid);
+  --color-ring: var(--primary);
+
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-chart-6: var(--chart-6);
+  --color-chart-7: var(--chart-7);
+  --color-chart-8: var(--chart-8);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--text-2);
+  --color-sidebar-primary: var(--primary);
+  --color-sidebar-primary-foreground: var(--primary-foreground);
+  --color-sidebar-accent: var(--surface-2);
+  --color-sidebar-accent-foreground: var(--text);
+  --color-sidebar-border: var(--border);
+  --color-sidebar-ring: var(--primary);
+}
+
+/* ---------- light (default) ---------- */
+:root {
+  color-scheme: light;
+
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 16px;
+  --r-xl: 20px;
+  --radius: 16px;
+
+  --bg: #f2f2f7;
+  --surface: #ffffff;
+  --surface-2: #f6f6fa;
+  --surface-3: #ebebf2;
+  --sidebar: #fafafc;
+  --border: #eceaf3;
+  --border-solid: #e4e2ee;
+  --text: #14121c;
+  --text-2: #5c5870;
+  --text-3: #918da3;
+
+  --primary: #7c4dff;
+  --primary-foreground: #ffffff;
+  --primary-soft: #7c4dff14;
+  --accent: #19c2d6;
+  --accent-foreground: #04252a;
+  --accent-soft: #19c2d614;
+
+  --success: #17a673;
+  --warning: #d99a1d;
+  --danger: #f0517a;
+  --on-danger: #ffffff;
+  --info: #19c2d6;
+
+  /* pastel card tints — the MarketMask palette */
+  --tint-pink: #fdeaf2;
+  --tint-pink-ink: #d4467c;
+  --tint-mint: #e8f6ec;
+  --tint-mint-ink: #1d8f5f;
+  --tint-lilac: #f0ebff;
+  --tint-lilac-ink: #6b45e0;
+  --tint-cream: #fdf3e4;
+  --tint-cream-ink: #b57a17;
+
+  --chart-1: #7c4dff;
+  --chart-2: #19c2d6;
+  --chart-3: #17a673;
+  --chart-4: #f0a92e;
+  --chart-5: #f0517a;
+  --chart-6: #b39dff;
+  --chart-7: #f0517a;
+  --chart-8: #c3c0d0;
+
+  --card-shadow-rest: 0 1px 2px rgba(20, 18, 28, 0.04);
+  --card-shadow-hover: 0 12px 30px -16px rgba(60, 40, 120, 0.22);
+}
+
+
+/* ---------- dark ---------- */
+.dark {
+  color-scheme: dark;
+
+  /* The same layout in a warm violet-tinted night: plum-black canvas,
+     lifted charcoal cards, the same pastel tints muted into deep washes. */
+  --bg: #0e0d14;
+  --surface: #17161f;
+  --surface-2: #1e1c28;
+  --surface-3: #272433;
+  --sidebar: #131220;
+  --border: #262336;
+  --border-solid: #2f2b40;
+  --text: #f4f2fa;
+  --text-2: #aaa5bd;
+  --text-3: #807c93;
+
+  --primary: #9b7bff;
+  --primary-foreground: #100a1e;
+  --primary-soft: #9b7bff1f;
+  --accent: #3ad9ea;
+  --accent-foreground: #04252a;
+  --accent-soft: #3ad9ea1f;
+
+  --success: #45d3a4;
+  --warning: #f5c462;
+  --danger: #ff7196;
+  --on-danger: #1a0508;
+  --info: #3ad9ea;
+
+  --tint-pink: #2b1a26;
+  --tint-pink-ink: #ff8fb4;
+  --tint-mint: #14251f;
+  --tint-mint-ink: #56dcac;
+  --tint-lilac: #201c33;
+  --tint-lilac-ink: #b49bff;
+  --tint-cream: #2a2318;
+  --tint-cream-ink: #f3c979;
+
+  --chart-1: #9b7bff;
+  --chart-2: #3ad9ea;
+  --chart-3: #45d3a4;
+  --chart-4: #f5c462;
+  --chart-5: #ff7196;
+  --chart-6: #c2aeff;
+  --chart-7: #ff7196;
+  --chart-8: #807c93;
+
+  --card-shadow-rest:
+    0 1px 0 0 #ffffff0a inset,
+    0 1px 2px rgba(0, 0, 0, 0.5);
+  --card-shadow-hover:
+    0 1px 0 0 #ffffff14 inset,
+    0 20px 44px -24px rgba(0, 0, 0, 0.85);
+}
+
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    background-color: var(--bg);
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+    font-weight: 600;
+  }
+
+  svg {
+    stroke-width: 1.6;
+  }
+}
+
+/* ---------- typography utilities ---------- */
+
+@utility font-display {
+  font-family: var(--font-display);
+}
+
+@utility text-display {
+  font-family: var(--font-display);
+  font-size: 34px;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+}
+
+@utility text-h1 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.028em;
+  line-height: 1.2;
+}
+
+@utility text-h2 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+@utility text-micro {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@utility tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+@utility metric {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+/* ---------- surfaces & effects ---------- */
+
+@utility glass-bar {
+  background-color: color-mix(in srgb, var(--bg) 78%, transparent);
+  backdrop-filter: blur(18px) saturate(140%);
+}
+
+/*
+ * The one card language: white surface, hairline border, soft shadow,
+ * quiet 1px lift on hover. No glows, no cursor spotlight, no dot grids.
+ */
+@utility soft-card {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  box-shadow: var(--card-shadow-rest);
+  transition:
+    transform 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@utility soft-card-hover {
+  &:hover {
+    transform: translateY(-1px);
+    border-color: color-mix(in srgb, var(--primary) 26%, var(--border));
+    box-shadow: var(--card-shadow-hover);
+  }
+}
+
+/* Pastel tinted cards, straight from the reference: soft wash, no border,
+   ink colour that matches the wash. */
+@utility tint-pink {
+  background-color: var(--tint-pink);
+  border-color: color-mix(in srgb, var(--tint-pink-ink) 14%, transparent);
+}
+@utility tint-mint {
+  background-color: var(--tint-mint);
+  border-color: color-mix(in srgb, var(--tint-mint-ink) 14%, transparent);
+}
+@utility tint-lilac {
+  background-color: var(--tint-lilac);
+  border-color: color-mix(in srgb, var(--tint-lilac-ink) 14%, transparent);
+}
+@utility tint-cream {
+  background-color: var(--tint-cream);
+  border-color: color-mix(in srgb, var(--tint-cream-ink) 14%, transparent);
+}
+
+@utility ink-pink {
+  color: var(--tint-pink-ink);
+}
+@utility ink-mint {
+  color: var(--tint-mint-ink);
+}
+@utility ink-lilac {
+  color: var(--tint-lilac-ink);
+}
+@utility ink-cream {
+  color: var(--tint-cream-ink);
+}
+
+/* The violet hero/promo gradient from the reference's upgrade card. */
+@utility violet-gradient {
+  background-image: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--primary) 88%, white 12%),
+    color-mix(in srgb, var(--primary) 70%, #4318b8 30%)
+  );
+}
+
+
+/* Dim + blur whatever sits behind an open detail popover, like the reference. */
+@utility blur-behind {
+  filter: blur(3px);
+  opacity: 0.5;
+  transition:
+    filter 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+@utility dotted-rule {
+  border-top: 1px dashed color-mix(in srgb, var(--text-3) 45%, transparent);
+}
+
+/* Legacy alias so existing raw class usages inherit the new card language. */
+@utility spotlight-card {
+  position: relative;
+  isolation: isolate;
+  box-shadow: var(--card-shadow-rest);
+  transition:
+    transform 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 200ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  &:hover {
+    transform: translateY(-1px);
+    border-color: color-mix(in srgb, var(--primary) 26%, var(--border));
+    box-shadow: var(--card-shadow-hover);
+  }
+}
+
+@utility ambient-wash {
+  background:
+    radial-gradient(900px 420px at 12% -10%, color-mix(in srgb, var(--primary) 14%, transparent), transparent 70%),
+    radial-gradient(760px 380px at 92% 4%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 72%);
+}
+
+@keyframes sa-sheen {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+@utility sheen-on-hover {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      100deg,
+      transparent 35%,
+      color-mix(in srgb, var(--text) 10%, transparent) 50%,
+      transparent 65%
+    );
+    transform: translateX(-120%);
+  }
+
+  &:hover::after {
+    animation: sa-sheen 720ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+
+
+@utility skeleton-shimmer {
+  background: linear-gradient(90deg, var(--surface-2) 0%, var(--surface-3) 50%, var(--surface-2) 100%);
+  background-size: 200% 100%;
+  animation: sa-skeleton 1.4s ease-in-out infinite;
+}
+
+@keyframes sa-skeleton {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes sa-breathe {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+}
+
+/* A calm live indicator: it breathes, it does not glow. */
+@utility live-breathe {
+  animation: sa-breathe 2.4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+/* scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--surface-3) transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}

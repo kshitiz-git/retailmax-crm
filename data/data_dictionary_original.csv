@@ -1,0 +1,10 @@
+column_name,data_type,sample_value_1,sample_value_2,sample_value_3,nullable,description_fill_in
+customer_id,object/numeric,C00001,C00002,C00003,No,customer_id — [Learner to fill in description]
+age_group,object/numeric,18-25,36-45,18-25,No,age_group — [Learner to fill in description]
+region,object/numeric,West,South,North,No,region — [Learner to fill in description]
+purchase_freq,object/numeric,39,34,38,No,purchase_freq — [Learner to fill in description]
+avg_order_value,object/numeric,11303.88,11138.9,6738.12,No,avg_order_value — [Learner to fill in description]
+last_purchase_days,object/numeric,144,39,106,No,last_purchase_days — [Learner to fill in description]
+loyalty_points,object/numeric,5681,8609,9224,No,loyalty_points — [Learner to fill in description]
+churn_flag,object/numeric,0,0,0,No,churn_flag — [Learner to fill in description]
+rfm_segment,object/numeric,Lost,At_Risk,At_Risk,No,rfm_segment — [Learner to fill in description]
