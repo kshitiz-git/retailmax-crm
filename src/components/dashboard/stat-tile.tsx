@@ -76,7 +76,7 @@ export function StatTile({ label, value, format, hint, chip, icon: Icon, tint = 
       {chip && (
         <span
           className={cn(
-            "mt-3 inline-flex max-w-full items-center gap-1 self-start rounded-full px-2.5 py-1 text-[10.5px] font-semibold",
+            "mt-3 inline-flex max-w-full items-start gap-1 self-start rounded-xl px-2.5 py-1 text-[10.5px] font-semibold leading-snug",
             hero
               ? "bg-primary-foreground/20 text-primary-foreground"
               : cn(
@@ -87,8 +87,8 @@ export function StatTile({ label, value, format, hint, chip, icon: Icon, tint = 
                 ),
           )}
         >
-          <ChipArrow className="size-3 shrink-0" aria-hidden />
-          <span className="min-w-0 truncate">{chip.text}</span>
+          <ChipArrow className="mt-px size-3 shrink-0" aria-hidden />
+          <span className="min-w-0">{chip.text}</span>
         </span>
       )}
     </SpotlightCard>

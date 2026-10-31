@@ -70,10 +70,10 @@ export function ColumnBars({
 }) {
   return (
     <ChartFrame height={height}>
-      <BarChart data={data} margin={{ top: labels ? 18 : 6, right: 6, left: -14, bottom: 0 }}>
+      <BarChart data={data} margin={{ top: labels ? 18 : 6, right: 6, left: 0, bottom: 0 }}>
         <CartesianGrid stroke="var(--border)" strokeDasharray="3 3" vertical={false} opacity={0.5} />
-        <XAxis dataKey="label" {...AXIS} interval="preserveStartEnd" minTickGap={6} />
-        <YAxis {...AXIS} width={44} tickFormatter={axisFormat ?? ((v: number) => formatNumber(v))} />
+        <XAxis dataKey="label" {...AXIS} interval={data.length <= 8 ? 0 : "preserveStartEnd"} minTickGap={4} />
+        <YAxis {...AXIS} width={58} tickFormatter={axisFormat ?? ((v: number) => formatNumber(v))} />
         <Tooltip content={<Tip format={format} heading={heading} />} cursor={{ fill: "var(--surface-3)", opacity: 0.35 }} />
         <Bar dataKey="value" name={name} radius={[4, 4, 0, 0]} isAnimationActive={false}>
           {data.map((d) => (
@@ -152,7 +152,7 @@ export function ClickableDonut({
           <p className="text-[10px] uppercase tracking-wide text-muted-foreground">{centerLabel}</p>
         </div>
       </div>
-      <ul className="mt-3 grid grid-cols-2 gap-x-3 gap-y-1">
+      <ul className="mt-3 grid grid-cols-1 gap-y-0.5">
         {data.map((d) => (
           <li key={d.key}>
             <Link

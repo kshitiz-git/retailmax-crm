@@ -1,0 +1,10 @@
+column_name,data_type,sample_value_1,sample_value_2,sample_value_3,nullable,description
+customer_id,string,C00001,C00002,C00003,No,"Anonymised customer key: the letter C and five digits (C00001 to C05000). It is unique per row and is not linked to a name, phone number or email, so it is not personal data on its own."
+age_group,category,18-25,36-45,18-25,No,"Age band of the customer: 18-25, 26-35, 36-45, 46-55 or 55+. A band is stored instead of the exact age to protect privacy."
+region,category,West,South,North,No,"Sales region of the customer's registered address: North, South, East, West or Central."
+purchase_freq,int,39,34,38,No,Number of purchases (orders) the customer made in the observation period. Whole number from 1 to 48. This is the Frequency input of RFM.
+avg_order_value,float,11303.88,11138.90,6738.12,No,"Average value of one order in Indian rupees (INR), 2 decimals, between 100 and 25,000. Monetary value in RFM is purchase_freq multiplied by avg_order_value."
+last_purchase_days,int,144,39,106,No,"Days since the customer's last purchase, counted at the snapshot date. Whole number from 1 to 365; lower means more recent. This is the Recency input of RFM."
+loyalty_points,int,5681,8609,9224,No,"Current loyalty points balance, whole number from 0 to 9,999. In the generated rows it is about 1 point per INR 100 spent; HCL's original rows do not follow that relation."
+churn_flag,int,0,0,0,No,"1 if the customer has stopped buying (churned), 0 if still active. This is the label the churn model predicts. About 15% of rows are 1."
+rfm_segment,category,At_Risk,Champion,Loyal,No,"Customer segment from the shared RFM rule: quintile scores 1-5 for recency, frequency and spend, then Champion (R>=4 and F>=4), Loyal, New, At_Risk or Lost. Recomputed over the cleaned rows, so it matches the segment the app shows."

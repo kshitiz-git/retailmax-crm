@@ -9,9 +9,19 @@ export function quintileScores(values: number[], higherIsBetter: boolean): numbe
   const n = values.length;
   const order = values.map((v, i) => [v, i] as const).sort((a, b) => a[0] - b[0] || a[1] - b[1]);
   const scores = new Array<number>(n);
-  order.forEach(([, i], rank) => {
-    const q = Math.min(5, Math.floor((rank * 5) / n) + 1); // 1 = lowest values
-    scores[i] = higherIsBetter ? q : 6 - q;
+  // pandas.qcut(rank, 5) puts rank r (1..n) in the first bin k whose upper edge 1 + (n-1)*k/5
+  // is >= r (edges are linear-interpolated quantiles of the ranks). Same here, so the browser
+  // and analysis/clean_dataset.py always agree.
+  order.forEach(([, i], pos) => {
+    const rank = pos + 1;
+    let q = 5;
+    for (let k = 1; k <= 5; k++) {
+      if (rank <= 1 + ((n - 1) * k) / 5) {
+        q = k;
+        break;
+      }
+    }
+    scores[i] = higherIsBetter ? q : 6 - q; // 1 = lowest values
   });
   return scores;
 }

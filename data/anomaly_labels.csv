@@ -1,0 +1,136 @@
+customer_id,fault_type,column,raw_value
+C01337,duplicate_row,*,exact copy of an existing row
+C01786,duplicate_row,*,exact copy of an existing row
+C02690,duplicate_row,*,exact copy of an existing row
+C02080,duplicate_row,*,exact copy of an existing row
+C01698,duplicate_row,*,exact copy of an existing row
+C03407,duplicate_row,*,exact copy of an existing row
+C01540,duplicate_row,*,exact copy of an existing row
+C04184,duplicate_row,*,exact copy of an existing row
+C04832,duplicate_row,*,exact copy of an existing row
+C03282,duplicate_row,*,exact copy of an existing row
+C04325,duplicate_row,*,exact copy of an existing row
+C02968,duplicate_row,*,exact copy of an existing row
+C03651,duplicate_row,*,exact copy of an existing row
+C04031,duplicate_row,*,exact copy of an existing row
+C03810,duplicate_row,*,exact copy of an existing row
+C04515,duplicate_row,*,exact copy of an existing row
+C01108,duplicate_row,*,exact copy of an existing row
+C03563,duplicate_row,*,exact copy of an existing row
+C04584,duplicate_row,*,exact copy of an existing row
+C04352,duplicate_row,*,exact copy of an existing row
+C03840,missing_value,age_group,
+C03232,missing_value,age_group,
+C01092,missing_value,age_group,
+C01503,missing_value,age_group,
+C02053,missing_value,age_group,
+C02337,missing_value,age_group,
+C01331,missing_value,age_group,
+C01914,missing_value,age_group,
+C03033,missing_value,region,
+C03183,missing_value,region,
+C04068,missing_value,region,
+C04762,missing_value,region,
+C01027,missing_value,region,
+C01185,missing_value,region,
+C03429,missing_value,region,
+C01705,missing_value,region,
+C01645,missing_value,avg_order_value,
+C01431,missing_value,avg_order_value,
+C04179,missing_value,avg_order_value,
+C04629,missing_value,avg_order_value,
+C01282,missing_value,avg_order_value,
+C00678,missing_value,avg_order_value,
+C03335,missing_value,avg_order_value,
+C03822,missing_value,avg_order_value,
+C01649,missing_value,avg_order_value,
+C01522,missing_value,avg_order_value,
+C04688,missing_value,loyalty_points,
+C04385,missing_value,loyalty_points,
+C01926,missing_value,loyalty_points,
+C04357,missing_value,loyalty_points,
+C03512,missing_value,loyalty_points,
+C03170,missing_value,loyalty_points,
+C03195,missing_value,loyalty_points,
+C03163,missing_value,loyalty_points,
+C02898,missing_value,last_purchase_days,
+C04048,missing_value,last_purchase_days,
+C01235,missing_value,last_purchase_days,
+C02311,missing_value,last_purchase_days,
+C03582,missing_value,last_purchase_days,
+C01666,missing_value,churn_flag,
+C01140,missing_value,churn_flag,
+C02451,missing_value,churn_flag,
+C00880,missing_value,churn_flag,
+C01007,missing_value,churn_flag,
+C03954,missing_value,churn_flag,
+C04784,negative_value,avg_order_value,-10900.25
+C00751,negative_value,avg_order_value,-2674.11
+C04223,negative_value,avg_order_value,-12649.86
+C02193,negative_value,avg_order_value,-4828.34
+C00765,negative_value,avg_order_value,-8302.83
+C04557,negative_value,avg_order_value,-19950.0
+C04289,negative_value,avg_order_value,-11504.05
+C04969,negative_value,avg_order_value,-8583.14
+C02634,negative_value,avg_order_value,-9321.89
+C03656,negative_value,avg_order_value,-6196.24
+C04618,negative_value,avg_order_value,-9260.42
+C03818,negative_value,avg_order_value,-6149.21
+C02736,negative_value,loyalty_points,-597
+C04703,negative_value,loyalty_points,-1033
+C02071,negative_value,loyalty_points,-4035
+C02040,negative_value,loyalty_points,-164
+C04284,negative_value,loyalty_points,-1240
+C01998,negative_value,loyalty_points,-152
+C04939,out_of_range,last_purchase_days,-4
+C04259,out_of_range,last_purchase_days,-17
+C04042,out_of_range,last_purchase_days,0
+C02300,out_of_range,last_purchase_days,0
+C02134,out_of_range,last_purchase_days,441
+C00615,out_of_range,last_purchase_days,0
+C04620,out_of_range,last_purchase_days,745
+C00564,out_of_range,last_purchase_days,-17
+C00511,out_of_range,last_purchase_days,0
+C02933,out_of_range,last_purchase_days,0
+C04145,out_of_range,last_purchase_days,676
+C03215,out_of_range,last_purchase_days,420
+C01164,out_of_range,last_purchase_days,0
+C04322,out_of_range,last_purchase_days,865
+C00814,out_of_range,purchase_freq,273
+C00562,out_of_range,purchase_freq,237
+C02181,out_of_range,purchase_freq,342
+C04354,out_of_range,purchase_freq,0
+C04621,out_of_range,purchase_freq,244
+C02008,out_of_range,purchase_freq,0
+C01381,out_of_range,purchase_freq,-3
+C01310,out_of_range,purchase_freq,-1
+C02829,out_of_range,avg_order_value,1054743.0
+C02135,out_of_range,avg_order_value,91117.2
+C03929,out_of_range,avg_order_value,706567.0
+C00539,out_of_range,avg_order_value,753997.0
+C01065,out_of_range,avg_order_value,81694.9
+C04896,out_of_range,avg_order_value,426840.0
+C01862,format_inconsistency,region,East 
+C02677,format_inconsistency,region,SOUTH
+C03675,format_inconsistency,region,central
+C01326,format_inconsistency,region,NORTH
+C04056,format_inconsistency,region, South 
+C04637,format_inconsistency,region,North 
+C02744,format_inconsistency,region,west
+C04110,format_inconsistency,region,WEST
+C04163,format_inconsistency,age_group,26-35 
+C03495,format_inconsistency,age_group, 55+ 
+C04910,format_inconsistency,age_group,26-35 
+C04215,format_inconsistency,age_group, 26-35 
+C01030,format_inconsistency,age_group, 18-25 
+C02247,format_inconsistency,age_group, 55+ 
+C00841,format_inconsistency,churn_flag,false
+C02211,format_inconsistency,churn_flag,true
+C03686,format_inconsistency,churn_flag,false
+C01700,format_inconsistency,churn_flag,No
+C03995,format_inconsistency,churn_flag,No
+C01615,format_inconsistency,churn_flag,No
+C03830,invalid_category,age_group,N/A
+C03567,invalid_category,age_group,Unknown
+C03266,invalid_category,age_group,Unknown
+C01134,invalid_category,age_group,Unknown
