@@ -81,7 +81,7 @@ export function AgreementMatrix({ customers }: { customers: Customer[] }) {
               )}
             >
               <p className="text-micro text-muted-foreground">{s.label}</p>
-              <p className="metric mt-2 text-[26px]">{a.n ? formatPercent(pct(a)) : "n/a"}</p>
+              <p className="metric mt-2 text-[21px] [overflow-wrap:anywhere] sm:text-[26px]">{a.n ? formatPercent(pct(a)) : "n/a"}</p>
               <p className="mt-1.5 text-[11.5px] text-muted-foreground">
                 {a.n
                   ? `${formatNumber(a.agree)} of ${formatNumber(a.n)} agree · chance level ${formatPercent(a.chance * 100, 0)}`

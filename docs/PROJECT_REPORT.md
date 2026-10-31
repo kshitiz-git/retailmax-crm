@@ -289,7 +289,7 @@ Churn by recency score falls from 43.2% (R = 1) to 16.5%, 7.1%, 5.0% and 3.8% (R
 
 ### 7.3 Agreement with the app
 
-pandas `qcut` and the app's integer formula can put one customer on the other side of a cut-off for some row counts (in the range 4,850 to 5,000, 90 of the 151 possible counts differ). For the 4,961 rows in the delivered file they agree on every customer (checked: 0 differences in R, F, M and segment). If the user imports a CSV with a different number of rows, a few customers at a boundary may differ by one score.
+The first version of the app scored quintiles with a simpler integer formula. A comparison against pandas found that the two could put one customer on the other side of a cut-off for some row counts (90 of the 151 possible counts between 4,850 and 5,000). The app was changed to use the same rule as `pandas.qcut` on ranks: rank r goes to the first score k whose upper edge 1 + (n − 1)·k/5 is at least r. After the change, the two were compared for every row count from 5 to 399 and from 4,800 to 5,100 (696 sizes) with 0 differences, and on the delivered file the app's computed segment equals the `rfm_segment` column for 4,961 of 4,961 customers (shown on the Segments page).
 
 ---
 
@@ -486,7 +486,7 @@ Testing has two parts: checks on the data pipeline, which were run and whose res
 | T6 | Generator and cleaner are deterministic: two runs give identical files | pass |
 | T7 | Cleaning rules caught the injected faults | pass: 135 of 135 labelled faults handled by the expected rule |
 | T8 | JSON model reproduces scikit-learn's probabilities to 1e-6 | pass: largest difference 2.2e-16 over all 993 test rows |
-| T9 | Python quintile scores equal the app's integer formula on the delivered file | pass: 0 differences |
+| T9 | App quintile formula equals pandas `qcut` on ranks | pass: 0 differences over 696 row counts; 4,961 of 4,961 segments agree in the app |
 | T10 | EDA notebook runs top to bottom with saved outputs | pass: 14 of 14 code cells, 11 charts, no errors |
 | T11 | Signal test on HCL's 500 rows | recorded: model ROC-AUC 0.475, given labels match the RFM rule on 19.4% |
 
@@ -566,7 +566,7 @@ On HCL's 500 rows alone the same model type scores a ROC-AUC of 0.475 (repeated 
 | 2 | The given segment labels contradict the RFM definition. | Recomputed the segment with the shared rule, so the CSV and the app show the same value. The original labels remain in `data/dataset_original.csv`. |
 | 3 | Churn is imbalanced (15%), so accuracy looks good for a useless model (0.849 for "nobody churns"). | Reported precision, recall, F1 and ROC-AUC next to accuracy, used class weights, and compared with a baseline. |
 | 4 | The model had to run in a browser with no server. | Chose logistic regression, exported its numbers as JSON and wrote a self-check that scores from the JSON file in plain Python and compares to scikit-learn to 1e-6. |
-| 5 | The segment rule exists twice (Python and TypeScript) and could drift. | Used pandas `qcut` on `rank(method="first")` to match the app's tie-breaking, then compared the two on the delivered file (0 differences). Found that the two can differ by one customer for some row counts and documented it. |
+| 5 | The segment rule exists twice (Python and TypeScript) and could drift. | Used pandas `qcut` on `rank(method="first")` to match the app's tie-breaking, then compared the two on the delivered file (0 differences). Found that the two could differ by one customer for some row counts, then changed the app to the exact pandas rule; 0 differences over 696 row counts. |
 | 6 | Cleaning could quietly invent data. | Never impute the label or recency and frequency; drop out-of-range rows instead of clipping; document each rule with a count; check the rules against the injected fault labels. |
 | 7 | The dataset has no consent column, but the brief requires consent before marketing. | The app keeps its own consent flags and log. It starts from a documented demo default and the user's changes override it. |
 | 8 | The dataset records purchases, not visits or leads, so a classic sales funnel is impossible. | Built a lifecycle funnel from purchase counts and spend, and a campaign funnel from sent to converted. |
@@ -618,7 +618,7 @@ HCL's dataset is used under the terms of the programme folder it came in. The ge
 3. **Threshold and probabilities.** The 0.5 threshold with balanced weights gives high recall and low precision, and the probabilities are inflated relative to the true rate.
 4. **Simulated campaigns.** Campaign results come from fixed channel and segment rates. No message is sent and no response is measured.
 5. **Browser-only state.** One browser holds one copy of the changes. There are no user accounts, no sharing, no backup and no server-side audit trail.
-6. **Quintile edge cases.** For some row counts pandas and the app differ by one customer at a score boundary.
+6. **One rule, two languages.** The segment rule is written in Python and in TypeScript. They match today (checked over 696 row counts); a shared test fixture would keep them matched after future edits.
 7. **Range checks only.** Cleaning cannot find wrong values that look plausible.
 
 ### 15.2 Future scope

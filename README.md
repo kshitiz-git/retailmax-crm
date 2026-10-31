@@ -101,4 +101,4 @@ R and F:
 - [`docs/PROJECT_REPORT.md`](docs/PROJECT_REPORT.md) — project report
 - [`docs/SYNOPSIS.md`](docs/SYNOPSIS.md) — filled synopsis template
 - [`data/data_dictionary.csv`](data/data_dictionary.csv) — column descriptions
-- [`docs/hcl/`](docs/hcl/) — original HCL brief and synopsis template
+- The original HCL brief and synopsis template are kept out of this public repository.

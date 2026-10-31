@@ -31,7 +31,7 @@ export function RiskHistogram({ customers }: { customers: Customer[] }) {
   return (
     <div>
       <ChartFrame height={230}>
-        <BarChart data={data} margin={{ top: 6, right: 6, left: -12, bottom: 0 }} barCategoryGap="12%">
+        <BarChart data={data} margin={{ top: 6, right: 6, left: 0, bottom: 0 }} barCategoryGap="12%">
           <CartesianGrid stroke="var(--border)" strokeDasharray="3 3" vertical={false} opacity={0.5} />
           <XAxis dataKey="label" {...AXIS} interval={0} tick={{ fill: "var(--text-3)", fontSize: 9 }} />
           <YAxis {...AXIS} width={42} tickFormatter={(v: number) => formatCompact(v)} />
@@ -136,7 +136,7 @@ export function PredictedVsActual({ customers }: { customers: Customer[] }) {
   return (
     <div>
       <ChartFrame height={230}>
-        <BarChart data={data} margin={{ top: 6, right: 6, left: -12, bottom: 0 }} barGap={2}>
+        <BarChart data={data} margin={{ top: 6, right: 6, left: 0, bottom: 0 }} barGap={2}>
           <CartesianGrid stroke="var(--border)" strokeDasharray="3 3" vertical={false} opacity={0.5} />
           <XAxis dataKey="label" {...AXIS} interval={0} />
           <YAxis {...AXIS} width={40} tickFormatter={(v: number) => `${v}%`} />

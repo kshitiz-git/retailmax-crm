@@ -113,7 +113,7 @@ export function AreaTrend({
 }) {
   return (
     <ChartFrame height={height}>
-      <AreaChart data={data} margin={{ top: 4, right: 6, left: -18, bottom: 0 }}>
+      <AreaChart data={data} margin={{ top: 4, right: 6, left: 0, bottom: 0 }}>
         <defs>
           {keys.map((k, i) => (
             <linearGradient key={k} id={`grad-${k.replace(/\W/g, "")}`} x1="0" y1="0" x2="0" y2="1">
@@ -124,7 +124,7 @@ export function AreaTrend({
         </defs>
         <CartesianGrid stroke="var(--border)" strokeDasharray="3 3" vertical={false} opacity={0.5} />
         <XAxis dataKey="label" {...AXIS} interval="preserveStartEnd" minTickGap={24} />
-        <YAxis {...AXIS} width={46} tickFormatter={(v: number) => (currency ? `₹${formatCompact(v)}` : formatCompact(v))} />
+        <YAxis {...AXIS} width={currency ? 58 : 46} tickFormatter={(v: number) => (currency ? `₹${formatCompact(v)}` : formatCompact(v))} />
         <Tooltip content={currency ? <CurrencyTip /> : <ChartTip />} />
         {keys.length > 1 && <Legend wrapperStyle={{ fontSize: 10 }} iconType="circle" />}
         {keys.map((k, i) => (
@@ -169,7 +169,7 @@ export function BarSeries({
       <BarChart
         data={data}
         layout={horizontal ? "vertical" : "horizontal"}
-        margin={{ top: 4, right: 10, left: horizontal ? 8 : -18, bottom: 0 }}
+        margin={{ top: 4, right: 10, left: horizontal ? 8 : 0, bottom: 0 }}
       >
         <CartesianGrid stroke="var(--border)" strokeDasharray="3 3" vertical={horizontal} horizontal={!horizontal} opacity={0.5} />
         {horizontal && (
@@ -178,7 +178,7 @@ export function BarSeries({
         {horizontal && <YAxis type="category" dataKey={catKey} {...AXIS} width={124} />}
         {!horizontal && <XAxis dataKey={catKey} {...AXIS} interval="preserveStartEnd" minTickGap={16} />}
         {!horizontal && (
-          <YAxis {...AXIS} width={46} tickFormatter={(v: number) => (currency ? `₹${formatCompact(v)}` : formatCompact(v))} />
+          <YAxis {...AXIS} width={currency ? 58 : 46} tickFormatter={(v: number) => (currency ? `₹${formatCompact(v)}` : formatCompact(v))} />
         )}
         <Tooltip content={currency ? <CurrencyTip /> : <ChartTip />} cursor={{ fill: "var(--surface-3)", opacity: 0.35 }} />
         {keys.length > 1 && <Legend wrapperStyle={{ fontSize: 10 }} iconType="circle" />}
@@ -224,7 +224,7 @@ export function LineSeries({
 }) {
   return (
     <ChartFrame height={height}>
-      <LineChart data={data} margin={{ top: 4, right: 8, left: -18, bottom: 0 }}>
+      <LineChart data={data} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
         <CartesianGrid stroke="var(--border)" strokeDasharray="3 3" vertical={false} opacity={0.5} />
         <XAxis dataKey="label" {...AXIS} interval="preserveStartEnd" minTickGap={24} />
         <YAxis {...AXIS} width={44} tickFormatter={(v: number) => formatCompact(v)} />
@@ -267,7 +267,7 @@ export function DualAxis({
 }) {
   return (
     <ChartFrame height={height}>
-      <ComposedChart data={data} margin={{ top: 4, right: 4, left: -18, bottom: 0 }}>
+      <ComposedChart data={data} margin={{ top: 4, right: 4, left: 0, bottom: 0 }}>
         <CartesianGrid stroke="var(--border)" strokeDasharray="3 3" vertical={false} opacity={0.5} />
         <XAxis dataKey="label" {...AXIS} interval="preserveStartEnd" minTickGap={24} />
         <YAxis yAxisId="left" {...AXIS} width={42} tickFormatter={(v: number) => formatCompact(v)} />

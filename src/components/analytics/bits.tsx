@@ -84,7 +84,7 @@ export function StatTile({
   return (
     <div className={cn("rounded-[14px] border border-border bg-surface-2/60 px-4 py-3.5", className)}>
       <p className="text-micro text-muted-foreground">{label}</p>
-      <p className="metric mt-2.5 text-[26px]" style={accent ? { color: accent } : undefined}>
+      <p className="metric mt-2.5 text-[21px] [overflow-wrap:anywhere] sm:text-[26px]" style={accent ? { color: accent } : undefined}>
         {value}
       </p>
       {sub && <p className="mt-1.5 text-[11.5px] text-muted-foreground">{sub}</p>}

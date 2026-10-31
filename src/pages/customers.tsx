@@ -92,7 +92,7 @@ function Stat({ label, value, sub }: { label: string; value: string; sub?: strin
   return (
     <StaggerItem className="soft-card p-4">
       <p className="text-micro text-text-2">{label}</p>
-      <p className="metric mt-2.5 text-[26px] text-foreground">{value}</p>
+      <p className="metric mt-2.5 text-[21px] text-foreground [overflow-wrap:anywhere] sm:text-[26px]">{value}</p>
       {sub && <p className="mt-1.5 text-[11.5px] text-text-3">{sub}</p>}
     </StaggerItem>
   );

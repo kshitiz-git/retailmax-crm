@@ -24,7 +24,7 @@ export function filterSummary(c: Pick<Campaign, "regions" | "ageGroups" | "riskB
 function Figure({ label, value }: { label: string; value: string }) {
   return (
     <div className="min-w-0">
-      <p className="truncate text-[10.5px] uppercase tracking-wide text-text-3">{label}</p>
+      <p className="text-[10.5px] uppercase leading-tight tracking-wide text-text-3">{label}</p>
       <p className="metric mt-1 text-[17px] text-foreground">{value}</p>
     </div>
   );

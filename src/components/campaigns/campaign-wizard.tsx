@@ -91,7 +91,7 @@ function Field({
 function Stat({ label, value, tone, sub }: { label: string; value: string; tone?: "warn" | "ok"; sub?: string }) {
   return (
     <div className="min-w-0 rounded-[14px] bg-surface-2 px-3.5 py-3">
-      <p className="truncate text-[10.5px] uppercase tracking-wide text-text-3">{label}</p>
+      <p className="text-[10.5px] uppercase leading-tight tracking-wide text-text-3">{label}</p>
       <p
         className={cn(
           "metric mt-1.5 text-[20px]",
@@ -102,7 +102,7 @@ function Stat({ label, value, tone, sub }: { label: string; value: string; tone?
       >
         {value}
       </p>
-      {sub && <p className="mt-1 truncate text-[11px] text-text-3">{sub}</p>}
+      {sub && <p className="mt-1 text-[11px] leading-snug text-text-3">{sub}</p>}
     </div>
   );
 }
