@@ -1,14 +1,120 @@
 {
   "model": "logistic_regression",
-  "trained_on_rows": 0,
-  "numeric": {"purchase_freq": {"mean": 24, "std": 14}, "avg_order_value": {"mean": 10000, "std": 5500}, "last_purchase_days": {"mean": 190, "std": 105}, "loyalty_points": {"mean": 4900, "std": 2900}},
-  "categorical": {"age_group": ["18-25","26-35","36-45","46-55","55+"], "region": ["Central","East","North","South","West"]},
-  "coef": {"purchase_freq": -0.8, "avg_order_value": -0.1, "last_purchase_days": 1.2, "loyalty_points": -0.2, "age_group=18-25": 0, "age_group=26-35": 0, "age_group=36-45": 0, "age_group=46-55": 0, "age_group=55+": 0, "region=Central": 0, "region=East": 0, "region=North": 0, "region=South": 0, "region=West": 0},
-  "intercept": -2.0,
+  "trained_on_rows": 3968,
+  "numeric": {
+    "purchase_freq": {
+      "mean": 18.102570564516128,
+      "std": 11.890580332778656
+    },
+    "avg_order_value": {
+      "mean": 8651.375055443548,
+      "std": 4458.239875979746
+    },
+    "last_purchase_days": {
+      "mean": 115.76436491935483,
+      "std": 108.14595252099491
+    },
+    "loyalty_points": {
+      "mean": 2025.9337197580646,
+      "std": 2117.035504665948
+    }
+  },
+  "categorical": {
+    "age_group": [
+      "18-25",
+      "26-35",
+      "36-45",
+      "46-55",
+      "55+"
+    ],
+    "region": [
+      "Central",
+      "East",
+      "North",
+      "South",
+      "West"
+    ]
+  },
+  "coef": {
+    "purchase_freq": -0.5001435476509397,
+    "avg_order_value": -0.1583814587446855,
+    "last_purchase_days": 1.0669991249725506,
+    "loyalty_points": -0.08698992220574434,
+    "age_group=18-25": 0.1348183187173128,
+    "age_group=26-35": 0.04432206214739772,
+    "age_group=36-45": -0.06152577943487681,
+    "age_group=46-55": -0.13538114897285022,
+    "age_group=55+": -0.37762194724325715,
+    "region=Central": 0.2729678474553657,
+    "region=East": -0.07568175426526691,
+    "region=North": -0.1952491393033977,
+    "region=South": -0.2013287865452167,
+    "region=West": -0.19609666212775942
+  },
+  "intercept": -0.4098678112953339,
   "threshold": 0.5,
-  "metrics": {"accuracy": 0, "precision": 0, "recall": 0, "f1": 0, "roc_auc": 0, "confusion_matrix": [[0,0],[0,0]], "test_rows": 0},
-  "comparison": [],
-  "original_500_roc_auc": 0.5,
-  "feature_importance": [],
-  "trained_at": "placeholder"
+  "metrics": {
+    "accuracy": 0.7593,
+    "precision": 0.356,
+    "recall": 0.7333,
+    "f1": 0.4793,
+    "roc_auc": 0.8133,
+    "confusion_matrix": [
+      [
+        644,
+        199
+      ],
+      [
+        40,
+        110
+      ]
+    ],
+    "test_rows": 993
+  },
+  "comparison": [
+    {
+      "model": "Logistic Regression",
+      "accuracy": 0.7593,
+      "precision": 0.356,
+      "recall": 0.7333,
+      "f1": 0.4793,
+      "roc_auc": 0.8133
+    },
+    {
+      "model": "Random Forest",
+      "accuracy": 0.8107,
+      "precision": 0.4069,
+      "recall": 0.5533,
+      "f1": 0.4689,
+      "roc_auc": 0.7942
+    }
+  ],
+  "original_500_roc_auc": 0.4748,
+  "feature_importance": [
+    {
+      "feature": "last_purchase_days",
+      "importance": 0.448
+    },
+    {
+      "feature": "purchase_freq",
+      "importance": 0.1683
+    },
+    {
+      "feature": "loyalty_points",
+      "importance": 0.1597
+    },
+    {
+      "feature": "avg_order_value",
+      "importance": 0.136
+    },
+    {
+      "feature": "age_group",
+      "importance": 0.045
+    },
+    {
+      "feature": "region",
+      "importance": 0.043
+    }
+  ],
+  "trained_at": "2026-11-01 03:49:30"
 }

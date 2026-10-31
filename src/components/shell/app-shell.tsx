@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import { formatNumber } from "@/lib/format";
 import { useCRM } from "@/lib/store";
 import { NAV } from "./nav-config";
+import { ErrorBoundary } from "./error-boundary";
 
 function Brand() {
   return (
@@ -135,7 +136,9 @@ function TopBar({ onMenu }: { onMenu: () => void }) {
 export function AppShell() {
   const [open, setOpen] = React.useState(false);
   const { pathname } = useLocation();
-  React.useEffect(() => window.scrollTo(0, 0), [pathname]);
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <div className="min-h-dvh bg-background text-foreground">
@@ -153,7 +156,9 @@ export function AppShell() {
       <div className="md:pl-60">
         <TopBar onMenu={() => setOpen(true)} />
         <main className="mx-auto w-full max-w-[1400px] px-4 py-6 md:px-6 md:py-8">
-          <Outlet />
+          <ErrorBoundary key={pathname}>
+            <Outlet />
+          </ErrorBoundary>
         </main>
         <footer className="px-4 pb-6 text-center text-[11px] text-muted-foreground md:px-6">
           RetailMax CRM · HCLTech Career Shaper project · anonymised customer IDs only (DPDP Act 2023)
