@@ -101,4 +101,8 @@ R and F:
 - [`docs/PROJECT_REPORT.md`](docs/PROJECT_REPORT.md) — project report
 - [`docs/SYNOPSIS.md`](docs/SYNOPSIS.md) — filled synopsis template
 - [`data/data_dictionary.csv`](data/data_dictionary.csv) — column descriptions
+- [`docs/DEMO_SCRIPT.md`](docs/DEMO_SCRIPT.md) — 1 min 50 s demo recording script
+- [`docs/figures/app/`](docs/figures/app/) — 25 screenshots of the live app
+- `docs/build/` — scripts that build the Word report, the filled synopsis and the ethics declaration
+  into `submission/` (for example `python docs/build/build_report_docx.py`; needs `python-docx`)
 - The original HCL brief and synopsis template are kept out of this public repository.
