@@ -102,12 +102,16 @@ function TopBar({ onMenu }: { onMenu: () => void }) {
         />
       </form>
       <div className="ml-auto flex items-center gap-2">
-        <Badge variant="outline" className="hidden sm:inline-flex">
-          {formatNumber(customers.length)} customers · {dataSource === "bundled" ? "dataset.csv" : "imported CSV"}
+        <Badge
+          variant="outline"
+          className="hidden sm:inline-flex"
+          title={dataSource === "bundled" ? "Customer data loaded from dataset.csv" : "Customer data loaded from an imported CSV file"}
+        >
+          {formatNumber(customers.length)} customers{dataSource === "bundled" ? "" : " · imported"}
         </Badge>
         {confirmReset ? (
           <div className="flex items-center gap-1.5">
-            <span className="hidden text-[12px] text-muted-foreground lg:inline">Clear all demo changes?</span>
+            <span className="hidden text-[12px] text-muted-foreground lg:inline">Undo all changes and reload the original data?</span>
             <Button
               size="sm"
               variant="destructive"
@@ -123,9 +127,9 @@ function TopBar({ onMenu }: { onMenu: () => void }) {
             </Button>
           </div>
         ) : (
-          <Button size="sm" variant="ghost" onClick={() => setConfirmReset(true)} title="Reset demo data">
+          <Button size="sm" variant="ghost" onClick={() => setConfirmReset(true)} title="Undo all changes and reload the original customer data">
             <RotateCcw className="size-4" />
-            <span className="hidden lg:inline">Reset demo</span>
+            <span className="hidden lg:inline">Reset data</span>
           </Button>
         )}
       </div>

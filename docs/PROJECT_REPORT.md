@@ -465,7 +465,7 @@ The app has nine screens, listed in the navigation in four groups. Descriptions 
 | 9 | **Privacy and Consent** | The consent log (who, granted or withdrawn, source, time), the right-to-erasure action, and an audit trail of important actions. |
 
 
-Two points a reader should know. First, the HCL dataset has no consent column, so the app starts from a **demo default**: 81.4% of customers (4,040 of 4,961) are treated as opted in, decided by a hash of the customer id (threshold 0.78) so it is stable between reloads. Any change the user makes is saved and overrides the default. A real deployment must replace this with recorded consent. Second, the app reads `rfm_segment` from the CSV but displays the segment it computes itself with the shared rule; the two agree on every row of the delivered file.
+Two points a reader should know. First, the HCL dataset has no consent column, so the app starts from a **default**: 81.4% of customers (4,040 of 4,961) are treated as opted in, decided by a hash of the customer id (threshold 0.78) so it is stable between reloads. Any change the user makes is saved and overrides the default. A real deployment must replace this with recorded consent. Second, the app reads `rfm_segment` from the CSV but displays the segment it computes itself with the shared rule; the two agree on every row of the delivered file.
 
 ---
 

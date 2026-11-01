@@ -34,7 +34,7 @@ npm run preview    # serve the build on http://localhost:5191
 Requires Node.js 20 or newer. No database, server or API key is needed: the dataset is bundled from
 `src/data/customers.csv`, the trained model from `src/data/churn-model.json`, and every change you
 make in the demo (campaigns, points, consent, notes, imports) is kept in the browser's localStorage.
-"Reset demo" in the top bar clears it.
+"Reset data" in the top bar clears it.
 
 ## Data and machine-learning pipeline (Python)
 

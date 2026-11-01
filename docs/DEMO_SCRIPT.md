@@ -1,7 +1,7 @@
 # Demo video script (1 min 50 s)
 
 Record the live site https://kshitiz-git.github.io/retailmax-crm/ at 1440 × 900 in a fresh browser
-window (or press "Reset demo" first). Speak the lines; the actions are in brackets. Times are a guide.
+window (or press "Reset data" first). Speak the lines; the actions are in brackets. Times are a guide.
 
 | Time | Screen | Say |
 |---|---|---|

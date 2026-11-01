@@ -330,7 +330,7 @@ export function CsvUpload() {
             <AlertDialogDescription>
               The {formatNumber(crm.rows.length)} customers now loaded will be swapped for the{" "}
               {formatNumber(staged?.rows.length ?? 0)} row{(staged?.rows.length ?? 0) === 1 ? "" : "s"} in this file. You can restore the bundled dataset any time from
-              Reset demo in the top bar.
+              Reset data in the top bar.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
