@@ -329,7 +329,7 @@ export function CsvUpload() {
             <AlertDialogTitle>Replace all current data?</AlertDialogTitle>
             <AlertDialogDescription>
               The {formatNumber(crm.rows.length)} customers now loaded will be swapped for the{" "}
-              {formatNumber(staged?.rows.length ?? 0)} rows in this file. You can restore the bundled dataset any time from
+              {formatNumber(staged?.rows.length ?? 0)} row{(staged?.rows.length ?? 0) === 1 ? "" : "s"} in this file. You can restore the bundled dataset any time from
               Reset demo in the top bar.
             </AlertDialogDescription>
           </AlertDialogHeader>

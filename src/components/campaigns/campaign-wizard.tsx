@@ -340,10 +340,16 @@ export function CampaignWizard({
               <p className="mt-2 flex items-start gap-1.5 text-[11.5px] text-text-2">
                 <ShieldCheck className="mt-px size-3.5 shrink-0 text-success" aria-hidden />
                 <span>
-                  DPDP Act 2023: {formatPercent(consentShare, 0)} of matching customers consented.{" "}
-                  {summary.excluded > 0
-                    ? `${formatNumber(summary.excluded)} are excluded automatically.`
-                    : "Nobody needs to be excluded."}
+                  {summary.matching === 0 ? (
+                    "DPDP Act 2023: only customers who gave marketing consent will be contacted."
+                  ) : (
+                    <>
+                      DPDP Act 2023: {formatPercent(consentShare, 0)} of matching customers consented.{" "}
+                      {summary.excluded === 0
+                        ? "Nobody needs to be excluded."
+                        : `${formatNumber(summary.excluded)} ${summary.excluded === 1 ? "is" : "are"} excluded automatically.`}
+                    </>
+                  )}
                 </span>
               </p>
               {audienceError && (

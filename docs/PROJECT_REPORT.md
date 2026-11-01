@@ -450,7 +450,7 @@ A logistic regression is a weighted sum passed through a sigmoid. Exporting its 
 
 ## 10. Module descriptions
 
-The app has nine screens, listed in the navigation in four groups. Descriptions below follow what the code does; learner screenshots should be added where marked.
+The app has nine screens, listed in the navigation in four groups. Descriptions below follow what the code does; screenshots of every screen and of the main flows are in section 10.1.
 
 | # | Module | What it does |
 |---|---|---|
@@ -464,9 +464,8 @@ The app has nine screens, listed in the navigation in four groups. Descriptions 
 | 8 | **Data Import / Export** | Upload a CSV with the same nine columns; rows are validated and errors are listed before anything is imported. Export the full customer table as CSV. A data quality panel summarises the file. |
 | 9 | **Privacy and Consent** | The consent log (who, granted or withdrawn, source, time), the right-to-erasure action, and an audit trail of important actions. |
 
-*[FILL IN: add one screenshot per module here for the final submission.]*
 
-Two points a reader should know. First, the HCL dataset has no consent column, so the app starts from a **demo default**: about 78% of customers are treated as opted in, decided by a hash of the customer id so it is stable between reloads. Any change the user makes is saved and overrides the default. A real deployment must replace this with recorded consent. Second, the app reads `rfm_segment` from the CSV but displays the segment it computes itself with the shared rule; the two agree on every row of the delivered file.
+Two points a reader should know. First, the HCL dataset has no consent column, so the app starts from a **demo default**: 81.4% of customers (4,040 of 4,961) are treated as opted in, decided by a hash of the customer id (threshold 0.78) so it is stable between reloads. Any change the user makes is saved and overrides the default. A real deployment must replace this with recorded consent. Second, the app reads `rfm_segment` from the CSV but displays the segment it computes itself with the shared rule; the two agree on every row of the delivered file.
 
 ---
 
@@ -494,22 +493,24 @@ Testing has two parts: checks on the data pipeline, which were run and whose res
 
 The model is evaluated on a stratified hold-out set that no step of training touched (993 rows), with five-fold cross-validation on the training rows as a second view (ROC-AUC 0.817, standard deviation 0.005). Scaling statistics come from the training rows only. Random seeds are fixed so every number in this report can be reproduced.
 
-### 11.3 Application test cases (to be run by the learner)
+### 11.3 Application test cases
 
-| # | Screen | Action | Expected result | Status |
+Run on the live site https://kshitiz-git.github.io/retailmax-crm/ on 1 November 2026 with Playwright driving Chromium, starting from a cleared demo state.
+
+| # | Screen | Action | Expected result | Result |
 |---|---|---|---|---|
-| A1 | Dashboard | Open the app | Customer count equals 4,961 and churn rate 15.1% | [FILL IN] |
-| A2 | Customers | Search for C00001 and open the profile | RFM scores, segment, tier, churn risk and consent shown | [FILL IN] |
-| A3 | Customers | Switch consent off for a customer, reload the page | The change is still there (saved in localStorage) | [FILL IN] |
-| A4 | Campaigns | Build a campaign for the Lost segment and launch it | Audience size shown before and after the consent gate; only the consented count is contacted | [FILL IN] |
-| A5 | Campaigns | Launch a campaign to an audience where nobody has consent | The campaign is not sent and the user is told why | [FILL IN] |
-| A6 | Loyalty | Add 500 points to a customer | Balance rises by 500, tier updates if a threshold is crossed, the ledger shows the entry | [FILL IN] |
-| A7 | Churn Prediction | Open a High-risk customer | Risk is at or above 0.5 and the per-feature contributions are listed | [FILL IN] |
-| A8 | Data Import | Upload a CSV with a wrong header | Import is refused with an error message | [FILL IN] |
-| A9 | Data Import | Upload a CSV with some bad rows | Errors are listed and valid rows can be imported | [FILL IN] |
-| A10 | Data Export | Export the full table and open it | Same nine columns in the same order | [FILL IN] |
-| A11 | Privacy | Erase a customer | The customer disappears from every screen and the audit trail records the action | [FILL IN] |
-| A12 | All | Run `npm run build` | TypeScript compiles with no errors | [FILL IN] |
+| A1 | Dashboard | Open the app | Customer count equals 4,961 and churn rate 15.1% | Pass: 4,961 customers, churn rate 15.1% |
+| A2 | Customers | Search for C00001 and open the profile | RFM scores, segment, tier, churn risk and consent shown | Pass: C00001 opens with RFM score, At Risk, Gold, Low risk (21.1%), consent given |
+| A3 | Customers | Switch consent off for a customer, reload the page | The change is still there (saved in localStorage) | Pass: switch off, full page reload, still off; activity shows "consent withdrawn" |
+| A4 | Campaigns | Build a campaign for the Lost segment and launch it | Audience size shown before and after the consent gate; only the consented count is contacted | Pass: 909 matched, 740 contacted, 169 excluded (no consent); campaign completed |
+| A5 | Campaigns | Launch a campaign to an audience where nobody has consent | The campaign is not sent and the user is told why | Pass: Lost + Central + 55+ + Medium risk = 1 customer, 0 consented; the wizard stops with "Nobody in this audience has given consent, so nobody can be contacted." |
+| A6 | Loyalty | Add 500 points to a customer | Balance rises by 500, tier updates if a threshold is crossed, the ledger shows the entry | Pass: C00001 5,681 to 6,181 points; ledger row "+500 Goodwill award" (tier stays Gold; a 2,000-point award on C00042 moved Bronze to Silver) |
+| A7 | Churn Prediction | Open a High-risk customer | Risk is at or above 0.5 and the per-feature contributions are listed | Pass: C02138, 95.9%, High risk, five contributions listed (+2.41 to +0.08) |
+| A8 | Data Import | Upload a CSV with a wrong header | Import is refused with an error message | Pass: "Missing column(s): customer_id, age_group, ..."; nothing imported |
+| A9 | Data Import | Upload a CSV with some bad rows | Errors are listed and valid rows can be imported | Pass: 2 valid rows merged (4,961 to 4,963); line 4 'region "Mars" invalid' and line 5 'purchase_freq must be >= 0' listed |
+| A10 | Data Export | Export the full table and open it | Same nine columns in the same order | Pass: retailmax-dataset.csv has the same nine-column header and 4,963 data rows |
+| A11 | Privacy | Erase a customer | The customer disappears from every screen and the audit trail records the action | Pass: C00005 erased after a confirm dialog; count 4,963 to 4,962; profile shows "Customer not found"; audit log row privacy.erase C00005 |
+| A12 | All | Run `npm run build` | TypeScript compiles with no errors | Pass: tsc --noEmit and vite build complete with no errors |
 
 The app was not load-tested and its response time was not measured, so this report gives no performance figure for it.
 
@@ -590,7 +591,7 @@ HCL's brief requires three things: customer data must be anonymised, consent mus
 - A customer's marketing consent is stored per customer. The campaign builder counts everyone who matches an audience and, separately, everyone who matches **and** consented. Only the second group is contacted. A campaign whose audience has no consent is not sent.
 - Consent can be granted or withdrawn on the customer's profile and on the Privacy and Consent screen. Each change is written to a consent log with the customer id, granted or withdrawn, the source and the time.
 - Withdrawing consent takes the same single action as granting it, in line with the Act's expectation that withdrawal is as easy as giving consent.
-- Limit: the demo starts from a hash-based default (about 78% opted in) because the dataset has no consent field. That default is a stand-in and must not be used with real customers.
+- Limit: the demo starts from a hash-based default (81.4% opted in, 4,040 of 4,961) because the dataset has no consent field. That default is a stand-in and must not be used with real customers.
 
 ### 14.3 Rights and retention
 
@@ -708,5 +709,6 @@ python -m venv .venv
 | EDA notebook with 3 or more visualisations | `analysis/eda.ipynb`, 11 visualisations, executed |
 | `dataset.csv`, cleaned and pre-processed | `data/dataset.csv` |
 | `data_dictionary.csv`, all columns described | `data/data_dictionary.csv` |
-| Demo video (1 to 2 minutes) or live demo at expo | [FILL IN: learner to record] |
-| Signed Ethical Compliance Declaration | [FILL IN: learner to sign the synopsis declaration] |
+| Demo video (1 to 2 minutes) or live demo at expo | Live demo: https://kshitiz-git.github.io/retailmax-crm/ ; recording script in `docs/DEMO_SCRIPT.md`; [FILL IN: learner to record] |
+| Signed Ethical Compliance Declaration | Prepared as a one-page declaration and in section 9 of the synopsis; [FILL IN: learner to sign] |
+| Source code repository | https://github.com/kshitiz-git/retailmax-crm |

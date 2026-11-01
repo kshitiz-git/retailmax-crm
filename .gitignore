@@ -5,3 +5,6 @@ __pycache__/
 *.log
 .venv/
 docs/hcl/
+
+# Filled submission files (personal details go in here)
+submission/

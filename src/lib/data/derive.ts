@@ -64,8 +64,9 @@ export function hashUnit(s: string): number {
 }
 
 /**
- * Default marketing consent before anyone edits it: ~78% opted in, decided by a hash of the id
- * so it is stable across reloads. Edited values live in the store and win over this.
+ * Default marketing consent before anyone edits it: hash of the id below 0.78. On the delivered
+ * 4,961 rows that is 4,040 opted in (81.4%; the hash is not perfectly uniform over sequential ids).
+ * It is stable across reloads. Edited values live in the store and win over this.
  */
 export function defaultConsent(id: string): boolean {
   return hashUnit(`consent:${id}`) < 0.78;
